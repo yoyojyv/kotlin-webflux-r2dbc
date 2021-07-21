@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <logger name="me.jerry.example" level="DEBUG"/>
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="org.springframework.data" level="DEBUG"/>
+    <logger name="org.springframework.jdbc" level="DEBUG"/>
+    <logger name="org.springframework.transaction" level="TRACE"/>
+    <logger name="com.netflix.discovery" level="OFF"/>
+
+    <root level="DEBUG">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</configuration>

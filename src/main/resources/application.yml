@@ -1,0 +1,67 @@
+
+spring:
+  main:
+    lazy-initialization: false
+
+# ================== datasource ==================
+datasource:
+
+  # read
+  read:
+    driver: pool
+    protocol: mysql
+    host: localhost
+    port: 3306
+    username: root
+    password: root
+    database: Channel
+    connection-timeout: 10s
+    pool-name: readDbPool
+    initial-size: 10
+    max-size: 30
+    max-idle-time: 15s
+    max-life-time: 20s
+    max-create-connection-time: 2s
+    max-acquire-time: 3s
+    acquire-retry: 1
+
+  # write
+  write:
+    driver: pool
+    protocol: mysql
+    host: localhost
+    port: 3306
+    username: root
+    password: root
+    database: Channel
+    connection-timeout: 10s
+    pool-name: writeDbPool
+    initial-size: 10
+    max-size: 30
+    max-idle-time: 15s
+    max-life-time: 20s
+    max-create-connection-time: 3s
+    max-acquire-time: 6s
+    acquire-retry: 1
+
+# ================== discovery ==================
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8011/eureka/
+
+      healthcheck:
+        enabled: true
+
+      instance:
+        hostname: localhost
+        lease-renewal-interval-in-seconds: 10
+        lease-expiration-duration-in-seconds: 30
+
+        metadata-map:
+          user.name: ${security.user.actuator.username}
+          user.password: ${security.user.actuator.password}
+
+
+
+logging.level.org.springframework.cloud.sleuth: DEBUG
