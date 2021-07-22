@@ -4,7 +4,9 @@ r2dbc routing 테스트 목적으로 만듬
 
 database read/write routing 이 transaction 적용시 정상적으로 이루어지는지 확인하기 위함 
 
-각 API 들이 정상 동작하는 것으로 확인이 된다면, connection pool max 수치보다 많은 요청을 한꺼번에 보내볼 것 
+각 API 들이 정상 동작하는 것으로 확인이 된다면, connection pool max 수치보다 많은 요청을 한꺼번에 보내볼 것
+
+**[2021-07 이후 - 이 링크의 소스를 참고하세요](https://github.com/yoyojyv/kotlin-r2dbc-routing)**
 
 ## url (handler) 
 1. http://localhost:8080/products/{id}
@@ -55,3 +57,6 @@ R2dbcRoutingConfig 설정, R2dbcReadWriteConfig 설정을 이렇게 바꿨다~ �
 - TransactionAwareConnectionFactoryProxy 를 살펴봤으나, 현재 r2dbc 는 지원하지 않음
 - read/write 각각 나누어 쓰거나 한쪽만 붙도록 구현을 해야할 것으로 보임
 
+## 결론 업데이트 (2021.07.22 기준)
+- 예전과 다르게 각 트랜젝션이 걸리도록 TransactionAwareConnectionFactoryProxy 로 ConnectionFactory 를 한번 감싸면 됨
+- [샘플 R2DBC routing](https://github.com/yoyojyv/kotlin-webflux-r2dbc)
